@@ -1,0 +1,58 @@
+/**
+ * Styles para Map
+ * Commit: Estilização do mapa com responsividade
+ */
+
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.map-container {
+  width: 100%;
+  height: 600px; /* Altura fixa mínima para visualização */
+  min-height: 400px; /* Garante que não fique menor que isso */
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  margin-top: 20px;
+
+  &__map {
+    height: 100%;
+    width: 100%;
+     min-height: 600px;
+    z-index: 1;
+  }
+
+  &__car-marker {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    // Ajuste para centralizar o marker
+    > div {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  // Personalização do Leaflet
+  :global {
+    .leaflet-container {
+      background: $color-background;
+      font-family: $font-family-primary;
+    }
+
+    .leaflet-popup-content-wrapper {
+      border-radius: $border-radius-medium;
+      @include shadow-medium;
+    }
+
+    .leaflet-bar {
+      border-radius: $border-radius-small;
+      @include shadow-small;
+    }
+  }
+}

@@ -1,0 +1,168 @@
+/**
+ * Mixins SCSS
+ * Commit: Mixins reutilizáveis para estilização
+ */
+
+@import 'variables';
+
+// Mixin para sombras
+@mixin shadow-small {
+  box-shadow: $shadow-small;
+}
+
+@mixin shadow-medium {
+  box-shadow: $shadow-medium;
+}
+
+@mixin shadow-large {
+  box-shadow: $shadow-large;
+}
+
+@mixin shadow-xlarge {
+  box-shadow: $shadow-xlarge;
+}
+
+// Mixin para responsividade
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == xs {
+    @media (max-width: $breakpoint-xs) {
+      @content;
+    }
+  } @else if $breakpoint == sm {
+    @media (max-width: $breakpoint-sm) {
+      @content;
+    }
+  } @else if $breakpoint == md {
+    @media (max-width: $breakpoint-md) {
+      @content;
+    }
+  } @else if $breakpoint == lg {
+    @media (max-width: $breakpoint-lg) {
+      @content;
+    }
+  } @else if $breakpoint == xl {
+    @media (min-width: $breakpoint-xl) {
+      @content;
+    }
+  }
+}
+
+// Mixin para centralização
+@mixin center-flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin center-absolute {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+// Mixin para truncate de texto
+@mixin truncate($lines: 1) {
+  @if $lines == 1 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  } @else {
+    display: -webkit-box;
+    -webkit-line-clamp: $lines;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+// Mixin para grid
+@mixin grid-columns($columns, $gap: $spacing-medium) {
+  display: grid;
+  grid-template-columns: repeat($columns, 1fr);
+  gap: $gap;
+}
+
+// Mixin para botões
+@mixin button-base {
+  padding: $spacing-small $spacing-medium;
+  border: none;
+  border-radius: $border-radius-small;
+  font-size: $font-size-medium;
+  font-weight: $font-weight-semibold;
+  cursor: pointer;
+  transition: all $transition-fast;
+  
+  &:hover {
+    transform: translateY(-2px);
+    @include shadow-medium;
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
+  
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+  }
+}
+
+// Mixin para card
+@mixin card {
+  background: $color-white;
+  border-radius: $border-radius-medium;
+  @include shadow-medium;
+  padding: $spacing-medium;
+}
+
+// Mixin para animações
+@mixin fade-in($duration: $transition-normal) {
+  animation: fadeIn $duration ease-in-out;
+}
+
+@mixin slide-up($duration: $transition-normal) {
+  animation: slideUp $duration ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// src/styles/mixins.scss
+
+// Variáveis locais para os mixins (caso não estejam importadas)
+$shadow-small: 0 2px 4px rgba(0,0,0,0.1) !default;
+$shadow-medium: 0 4px 8px rgba(0,0,0,0.15) !default;
+$border-radius-small: 4px !default;
+$border-radius-medium: 8px !default;
+
+@mixin shadow-small {
+  box-shadow: $shadow-small;
+}
+
+@mixin shadow-medium {
+  box-shadow: $shadow-medium;
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

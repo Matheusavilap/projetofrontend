@@ -1,0 +1,152 @@
+/**
+ * Styles para RouteSelector
+ * Commit: Estilização do seletor de rotas
+ */
+
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.route-selector {
+  padding: $spacing-medium;
+  background: $color-white;
+  border-radius: $border-radius-medium;
+  @include shadow-medium;
+
+  &__title {
+    font-size: $font-size-large;
+    font-weight: $font-weight-bold;
+    color: $color-primary;
+    margin-bottom: $spacing-medium;
+    padding-bottom: $spacing-small;
+    border-bottom: 2px solid $color-border;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-small;
+    margin-bottom: $spacing-medium;
+    max-height: 300px;
+    overflow-y: auto;
+  }
+
+  &__item {
+    padding: $spacing-small $spacing-medium;
+    border: 2px solid $color-border;
+    border-radius: $border-radius-small;
+    background: $color-white;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: left;
+    width: 100%;
+
+    &:hover {
+      border-color: $color-primary-light;
+      background: $color-background;
+    }
+
+    &--active {
+      border-color: $color-primary;
+      background: $color-primary-light;
+      @include shadow-small;
+    }
+  }
+
+  &__course-info {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-xs;
+  }
+
+  &__course-name {
+    font-weight: $font-weight-semibold;
+    color: $color-text;
+  }
+
+  &__course-details {
+    display: flex;
+    align-items: center;
+    gap: $spacing-small;
+    font-size: $font-size-small;
+    color: $color-text-secondary;
+
+    span:nth-child(2) {
+      color: $color-border;
+    }
+  }
+
+  &__controls {
+    display: flex;
+    gap: $spacing-small;
+    margin-bottom: $spacing-medium;
+  }
+
+  &__btn {
+    flex: 1;
+    padding: $spacing-small $spacing-medium;
+    border: none;
+    border-radius: $border-radius-small;
+    font-size: $font-size-medium;
+    font-weight: $font-weight-semibold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &--primary {
+      background: $color-primary;
+      color: $color-white;
+
+      &:hover {
+        background: $color-primary-dark;
+        @include shadow-medium;
+      }
+    }
+
+    &--secondary {
+      background: $color-background;
+      color: $color-text;
+
+      &:hover {
+        background: $color-border;
+      }
+    }
+  }
+
+  &__speed-control {
+    padding-top: $spacing-small;
+    border-top: 1px solid $color-border;
+  }
+
+  &__label {
+    display: block;
+    font-size: $font-size-small;
+    color: $color-text-secondary;
+    margin-bottom: $spacing-small;
+  }
+
+  &__speed-options {
+    display: flex;
+    gap: $spacing-small;
+  }
+
+  &__speed-btn {
+    flex: 1;
+    padding: $spacing-xs $spacing-small;
+    border: 1px solid $color-border;
+    border-radius: $border-radius-small;
+    background: $color-white;
+    font-size: $font-size-small;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+      border-color: $color-primary-light;
+      background: $color-background;
+    }
+
+    &--active {
+      background: $color-primary;
+      color: $color-white;
+      border-color: $color-primary;
+    }
+  }
+}

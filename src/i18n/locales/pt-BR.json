@@ -1,0 +1,45 @@
+{
+  "app": {
+    "title": "Rastreamento de Veículo 3D",
+    "subtitle": "Visualização em Tempo Real"
+  },
+  "vehicle": {
+    "plate": "Placa",
+    "vin": "VIN",
+    "color": "Cor",
+    "speed": "Velocidade",
+    "direction": "Direção",
+    "distance": "Distância",
+    "duration": "Duração",
+    "stops": "Paradas",
+    "km": "km",
+    "kmh": "km/h",
+    "hours": "horas",
+    "minutes": "minutos"
+  },
+  "routes": {
+    "title": "Seleção de Rotas",
+    "select": "Selecione uma rota",
+    "course": "Rota",
+    "totalCourses": "Total de Rotas",
+    "play": "Reproduzir",
+    "pause": "Pausar",
+    "reset": "Reiniciar",
+    "speed": "Velocidade da Animação",
+    "normal": "Normal",
+    "fast": "Rápido",
+    "slow": "Lento"
+  },
+  "map": {
+    "title": "Mapa de Rastreamento",
+    "zoomIn": "Aumentar zoom",
+    "zoomOut": "Diminuir zoom"
+  },
+  "stats": {
+    "totalDistance": "Distância Total",
+    "totalTime": "Tempo Total",
+    "avgSpeed": "Velocidade Média",
+    "maxSpeed": "Velocidade Máxima",
+    "gpsPoints": "Pontos GPS"
+  }
+}

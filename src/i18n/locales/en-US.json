@@ -1,0 +1,45 @@
+{
+  "app": {
+    "title": "3D Vehicle Tracking",
+    "subtitle": "Real-time Visualization"
+  },
+  "vehicle": {
+    "plate": "Plate",
+    "vin": "VIN",
+    "color": "Color",
+    "speed": "Speed",
+    "direction": "Direction",
+    "distance": "Distance",
+    "duration": "Duration",
+    "stops": "Stops",
+    "km": "km",
+    "kmh": "km/h",
+    "hours": "hours",
+    "minutes": "minutes"
+  },
+  "routes": {
+    "title": "Route Selection",
+    "select": "Select a route",
+    "course": "Route",
+    "totalCourses": "Total Routes",
+    "play": "Play",
+    "pause": "Pause",
+    "reset": "Reset",
+    "speed": "Animation Speed",
+    "normal": "Normal",
+    "fast": "Fast",
+    "slow": "Slow"
+  },
+  "map": {
+    "title": "Tracking Map",
+    "zoomIn": "Zoom in",
+    "zoomOut": "Zoom out"
+  },
+  "stats": {
+    "totalDistance": "Total Distance",
+    "totalTime": "Total Time",
+    "avgSpeed": "Average Speed",
+    "maxSpeed": "Max Speed",
+    "gpsPoints": "GPS Points"
+  }
+}

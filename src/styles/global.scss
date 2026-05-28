@@ -1,0 +1,21 @@
+// Importa os arquivos que estão NA MESMA PASTA
+@import './variables.scss';
+@import './mixins.scss';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  background-color: $color-background;
+  color: $color-text;
+  line-height: 1.6;
+}
+
+// Leaflet fix
+.leaflet-container {
+  font-family: inherit;
+}

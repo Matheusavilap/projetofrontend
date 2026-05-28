@@ -1,0 +1,57 @@
+// src/styles/variables.scss
+
+// ===== CORES =====
+$color-primary: #FFC107;
+$color-primary-dark: #FFA000;
+$color-primary-light: #FFECB3;
+
+$color-secondary: #2196F3;
+$color-secondary-dark: #1976D2;
+
+$color-success: #4CAF50;
+$color-warning: #FF9800;
+$color-error: #F44336;
+
+$color-white: #FFFFFF;
+$color-black: #000000;
+$color-background: #F5F7FA;
+$color-border: #E0E0E0;
+
+$color-text: #333333;
+$color-text-secondary: #666666;
+$color-text-light: #999999;
+
+// ===== TIPOGRAFIA =====
+$font-family-primary: 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+
+$font-size-xs: 0.75rem;
+$font-size-small: 0.875rem;
+$font-size-medium: 1rem;
+$font-size-large: 1.25rem;
+$font-size-xlarge: 1.5rem;
+
+$font-weight-regular: 400;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+// ===== ESPAÇAMENTO =====
+$spacing-xs: 0.25rem;    // 4px
+$spacing-small: 0.5rem;  // 8px
+$spacing-medium: 1rem;   // 16px
+$spacing-large: 1.5rem;  // 24px
+$spacing-xlarge: 2rem;   // 32px
+
+// ===== BORDAS =====
+$border-radius-small: 4px;
+$border-radius-medium: 8px;
+$border-radius-large: 16px;
+$border-radius-circle: 50%;
+
+// ===== SOMBRAS =====
+$shadow-small: 0 2px 4px rgba(0,0,0,0.1);
+$shadow-medium: 0 4px 8px rgba(0,0,0,0.15);
+$shadow-large: 0 8px 16px rgba(0,0,0,0.2);
+
+// ===== TRANSIÇÕES =====
+$transition-fast: 0.15s ease;
+$transition-normal: 0.3s ease;
