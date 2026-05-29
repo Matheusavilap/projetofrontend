@@ -1,65 +1,17 @@
 /**
- * Utilitários para coordenadas geográficas
- * Commit: Funções auxiliares para manipulação de coordenadas
+ * Calcula o ângulo (bearing) entre dois pontos GPS em graus.
+ * Resultado: 0° = Norte, 90° = Leste, 180° = Sul, 270° = Oeste
  */
+export function calculateBearing(lat1, lng1, lat2, lng2) {
+  const toRad = (deg) => (deg * Math.PI) / 180;
+  const toDeg = (rad) => (rad * 180) / Math.PI;
 
-/**
- * Converte coordenadas para formato legível
- * @param {number} lat - Latitude
- * @param {number} lng - Longitude
- * @returns {string} Coordenadas formatadas
- */
-export const formatCoordinates = (lat, lng) => {
-  const latDir = lat >= 0 ? 'N' : 'S';
-  const lngDir = lng >= 0 ? 'E' : 'W';
-  
-  return `${Math.abs(lat).toFixed(6)}° ${latDir}, ${Math.abs(lng).toFixed(6)}° ${lngDir}`;
-};
+  const φ1 = toRad(lat1);
+  const φ2 = toRad(lat2);
+  const Δλ = toRad(lng2 - lng1);
 
-/**
- * Calcula o centro de múltiplos pontos
- * @param {Array} points - Array de pontos {lat, lng}
- * @returns {Object} Ponto central {lat, lng}
- */
-export const calculateCenterPoint = (points) => {
-  if (!points || points.length === 0) return { lat: 0, lng: 0 };
+  const y = Math.sin(Δλ) * Math.cos(φ2);
+  const x = Math.cos(φ1) * Math.sin(φ2) - Math.sin(φ1) * Math.cos(φ2) * Math.cos(Δλ);
 
-  const sum = points.reduce((acc, point) => ({
-    lat: acc.lat + point.lat,
-    lng: acc.lng + point.lng
-  }), { lat: 0, lng: 0 });
-
-  return {
-    lat: sum.lat / points.length,
-    lng: sum.lng / points.length
-  };
-};
-
-/**
- * Calcula bounds (limites) de um conjunto de pontos
- * @param {Array} points - Array de pontos {lat, lng}
- * @returns {Object} Bounds {north, south, east, west}
- */
-export const calculateBounds = (points) => {
-  if (!points || points.length === 0) return null;
-
-  let north = -90;
-  let south = 90;
-  let east = -180;
-  let west = 180;
-
-  points.forEach(point => {
-    if (point.lat > north) north = point.lat;
-    if (point.lat < south) south = point.lat;
-    if (point.lng > east) east = point.lng;
-    if (point.lng < west) west = point.lng;
-  });
-
-  return { north, south, east, west };
-};
-
-export default {
-  formatCoordinates,
-  calculateCenterPoint,
-  calculateBounds
-};
+  return (toDeg(Math.atan2(y, x)) + 360) % 360;
+}

@@ -1,84 +1,43 @@
-# Frontend 3D Car - Projeto de Rastreamento de Veículo
+# Frontend 3D Car - Rastreamento de Veículo e Animação de Sprite
 
 ## 📋 Descrição
+Aplicação desenvolvida para simular o rastreamento de veículos em tempo real utilizando dados GPS. O projeto destaca-se por implementar uma animação fluida (estilo "Uber-like") onde o cursor do carro se move suavemente entre pontos geográficos, rotacionando automaticamente conforme a direção da rota, sem "pulos" ou travamentos.
 
-Projeto desenvolvido para o teste técnico de frontend, consistindo em uma aplicação que visualiza o rastreamento de um veículo em um mapa interativo, com animação de sprite baseada na direção e velocidade do veículo.
+## ✨ Funcionalidades e Diferenciais Técnicos
+
+- **Animação de Alta Performance**: Implementação de loop via `requestAnimationFrame` para garantir 60 FPS e atualização contínua, evitando os problemas de agitação comuns com `setInterval`.
+- **Interpolação Linear (LERP)**: Cálculo matemático para preencher os espaços entre os pontos GPS, criando uma transição suave de posição (Latitude/Longitude).
+- **Rotação Dinâmica (Bearing)**: Algoritmo trigonométrico executado em tempo real para calcular o ângulo entre o ponto atual e o próximo, garantindo que o carro faça as curvas corretamente.
+- **Gerenciamento de Sprite Sheet**: Correção de problemas de recorte de imagem e renderização no Leaflet usando `overflow: hidden` e manipulação direta de `background-position`.
+- **Controle de Velocidade**: Slider para ajustar a velocidade da simulação em tempo real (`0.5x` a `5x`).
+- **Rota Persistente**: Renderização garantida da linha do trajeto (`Polyline`) e centralização automática do mapa.
 
 ## 🚀 Tecnologias Utilizadas
 
-### Frontend
-- **React 18**: Biblioteca JavaScript para construção de interfaces
-  - Motivo: Amplamente adotado no mercado, grande comunidade, componentes reutilizáveis
-  
-- **Leaflet + React-Leaflet**: Biblioteca de mapas open-source
-  - Motivo: Leve, flexível, não requer chave de API (diferente do Google Maps)
-  
-- **SCSS/Sass**: Pré-processador CSS
-  - Motivo: Variáveis, mixins, aninhamento e melhor organização do código
-  
-- **React-Intl**: Biblioteca de internacionalização
-  - Motivo: Suporte a múltiplos idiomas, formatação de datas/números
-  
-- **Context API**: Gerenciamento de estado
-  - Motivo: Solução nativa do React, evita prop drilling
-
-### Ferramentas
-- **Git**: Versionamento de código
-- **npm**: Gerenciamento de pacotes
+| Tecnologia | Uso Principal |
+| :--- | :--- |
+| **React 18** | Componentização, Hooks (`useState`, `useEffect`, `useRef`) |
+| **Leaflet + React-Leaflet** | Renderização do mapa, `MapContainer`, `Marker`, `Polyline` |
+| **SCSS / Sass** | Estilização avançada, recorte de sprite e transições CSS |
+| **Trigonometria** | Cálculo de Bearing (direção) e projeção geográfica |
+| **requestAnimationFrame** | Loop de animação nativo do navegador para suavidade máxima |
 
 ## 📁 Estrutura do Projeto
+
+```text
 frontend-3d-car/
 ├── public/
-│ ├── index.html
-│ └── sprites/
-│ └── car-sprite.png (sprite sheet com 72 frames)
+│   └── sprites/
+│       └── car-sprite.png  # Sprite sheet horizontal com 72 frames
 ├── src/
-│ ├── components/
-│ │ ├── CarSprite/ (Componente de animação do carro)
-│ │ ├── Map/ (Componente de mapa)
-│ │ ├── RouteSelector/ (Seletor de rotas)
-│ │ └── VehicleInfo/ (Informações do veículo)
-│ ├── contexts/
-│ │ └── VehicleContext.jsx (Estado global)
-│ ├── hooks/
-│ │ ├── useVehicleAnimation.js (Hook de animação)
-│ │ └── useGPSData.js (Hook de dados GPS)
-│ ├── i18n/
-│ │ └── locales/ (Arquivos de tradução)
-│ ├── services/
-│ │ └── gpsService.js (Processamento de dados GPS)
-│ ├── styles/
-│ │ ├── variables.scss (Variáveis SCSS)
-│ │ ├── mixins.scss (Mixins reutilizáveis)
-│ │ └── global.scss (Estilos globais)
-│ ├── utils/
-│ │ ├── spriteCalculator.js (Cálculos de sprite)
-│ │ └── coordinateUtils.js (Utilitários de coordenadas)
-│ ├── App.jsx
-│ └── index.js
+│   ├── components/
+│   │   ├── CarSprite/
+│   │   │   ├── CarSprite.jsx   # Lógica de rotação e troca de frames via DOM
+│   │   │   └── CarSprite.scss  # Estilos de recorte (overflow) e transição
+│   │   └── Map/
+│   │       └── Map.jsx         # Componente de mapa, controles e integração
+│   ├── utils/
+│   │   └── coordinateUtils.js  # Funções matemáticas para GPS e Bearing
+│   ├── App.jsx                 # Gerenciamento de estado global e loop de animação
+│   └── index.js
 └── README.md
-
-
-## 🔧 Instalação e Execução
-
-### Pré-requisitos
-- Node.js (versão 14 ou superior)
-- npm ou yarn
-
-### Passos
-
-1. Clone o repositório
-```bash
-git clone <url-do-repositorio>
-cd frontend-3d-car
-
-
-npm install
-# ou
-yarn install
-
-
-npm start
-# ou
-yarn start
-

@@ -1,31 +1,40 @@
-// src/components/CarSprite/CarSprite.scss
-.car-sprite-wrapper {
-  position: relative;
-  width: 60px;
-  height: 60px;
-  // Centraliza no ponto do marker
-  margin-left: -30px;
-  margin-top: -30px;
-  z-index: 1000;
+/* Wrapper que define o tamanho exato do frame e corta o resto */
+.sprite-wrapper {
+  width: 64px !important;
+  height: 64px !important;
+  overflow: hidden !important; /* Garante que não vazem pixels de frames vizinhos */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  /* Remove sombras ou bordas que possam interferir */
+  background: transparent;
+  border: none;
+  box-shadow: none;
 }
 
-.car-sprite {
-  width: 60px;
-  height: 60px;
-  background-repeat: no-repeat;
-  // Garante que o sprite fique visível
-  display: block;
+/* O elemento que contém a imagem e rotaciona */
+.car-sprite-inner {
+  width: 64px !important; /* Tamanho exato de UM frame */
+  height: 64px !important;
+  
+  background-repeat: no-repeat !important;
+  background-size: auto 100% !important;
+  background-position: 0 0 !important;
+  
+  /* Garante que a rotação seja suave, mas a troca de imagem seja INSTANTÂNEA */
+  transition: transform 0.1s linear; 
+  transform-origin: center center;
+  
+  /* Evita que o navegador tente suavizar os pixels da imagem (anti-aliasing) */
+  image-rendering: -moz-crisp-edges;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
 }
 
-.car-indicator {
-  position: absolute;
-  bottom: 5px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  border: 2px solid white;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
-  z-index: 1001;
+/* Ajustes para o Leaflet não sobrescrever */
+.leaflet-marker-icon {
+  background: transparent !important;
+  border: none !important;
 }

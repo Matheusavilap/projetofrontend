@@ -12,16 +12,14 @@ export const useVehicle = () => {
   return context;
 };
 
-export const VehicleProvider = ({ children, gpsData }) => {
-  const [processedData, setProcessedData] = useState(() => 
-    gpsData ? gpsService.processGPSData(gpsData) : null
-  );
-  const [selectedCourse, setSelectedCourse] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [animationSpeed, setAnimationSpeed] = useState('normal');
-  const [currentPosition, setCurrentPosition] = useState(null);
-  const [currentIndex, setCurrentIndex] = useState(0);
-
+export const VehicleProvider = ({ children }) => {
+  const [vehicleData, setVehicleData] = useState({
+    position: { lat: -23.5505, lng: -46.6333 }, // Valor padrão (São Paulo)
+    speed: 0,
+    heading: 0,
+    route: []
+  });
+  
   const selectCourse = useCallback((courseIndex) => {
     setSelectedCourse(courseIndex);
     setCurrentIndex(0);
