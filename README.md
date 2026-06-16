@@ -13,7 +13,6 @@ Aplicação desenvolvida para o teste técnico de frontend, consistindo em uma i
 1. Clone o repositório:
    ```bash
    git clone https://github.com/Matheusavilap/projetofrontend.git
-   cd frontend-3d-car
 
 2. npm install
 
